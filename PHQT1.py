@@ -14,7 +14,7 @@ class LaserControllerGUI(QMainWindow):
     
     def __init__(self):
         super().__init__()
-        self.laser = Laser(findCom = False,verbose = True, debug = True)
+        self.laser = Laser(findCom = False,com = "com22", verbose = True, debug = True)
         self.update_timer = QTimer()
         #self.setup_timers()
         self.InUpdateFlag = 0

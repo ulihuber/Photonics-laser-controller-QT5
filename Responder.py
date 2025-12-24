@@ -18,15 +18,15 @@ class LaserSim:
     strCurrent="03e8"
     strCurrentLimit="2222"
     strDiodeVoltage = "3333"
-    strDiodeTemp = "0900"
+    strDiodeTemp = "00e6"
     strChillerTemp = "0000"
-    strShgTemp = "09c4"
-    strThgTemp = "0abc"
+    strShgTemp = "0200"
+    strThgTemp = "02c2"
     strFrequency = "000493E0"
     
 
     def __init__(self):
-        self.rs232 = serial.Serial('COM15',19200, timeout=0.1)
+        self.rs232 = serial.Serial('COM21',19200, timeout=0.1)
 
     def dprint(self,txt):
         if self.Debug:
@@ -206,29 +206,29 @@ class LaserSim:
             self.strChillerTemp = strTmp[8:12]
             self.strShgTemp = strTmp[12:16]
             self.strThgTemp = strTmp[16:20]
-            print ("Diode temp. set to   " + str.format('{:2.1f}',int(self.strDiodeTemp,16)/100) + " °C")
-            print ("Chiller temp. set to " + str.format('{:2.1f}',int(self.strChillerTemp,16)/100) + " °C")
-            print ("SHG temp. set to     " + str.format('{:2.1f}',int(self.strShgTemp,16)/100) + " °C")
-            print ("THG temp. set to     " + str.format('{:2.1f}',int(self.strThgTemp,16)/100) + " °C")
+            print ("Diode temp. set to   " + str.format('{:2.1f}',int(self.strDiodeTemp,16)/10) + " °C")
+            print ("Chiller temp. set to " + str.format('{:2.1f}',int(self.strChillerTemp,16)/10) + " °C")
+            print ("SHG temp. set to     " + str.format('{:2.1f}',int(self.strShgTemp,16)/10) + " °C")
+            print ("THG temp. set to     " + str.format('{:2.1f}',int(self.strThgTemp,16)/10) + " °C")
             self.sendAck(self.command)
             
         # get temperatures
         if self.command == "7D":
             self.SendReply("08fd" + self.strDiodeTemp +self.strChillerTemp + self.strShgTemp + self.strThgTemp + "0000000000000000")
             print("Temperatures sent : " )
-            print ("Diode temp.   " + str.format('{:2.1f}',int(self.strDiodeTemp,16)/100) + " °C")
-            print ("Chiller temp. " + str.format('{:2.1f}',int(self.strChillerTemp,16)/100) + " °C")
-            print ("SHG temp.     " + str.format('{:2.1f}',int(self.strShgTemp,16)/100) + " °C")
-            print ("THG temp.     " + str.format('{:2.1f}',int(self.strThgTemp,16)/100) + " °C")
+            print ("Diode temp.   " + str.format('{:2.1f}',int(self.strDiodeTemp,16)/10) + " °C")
+            print ("Chiller temp. " + str.format('{:2.1f}',int(self.strChillerTemp,16)/10) + " °C")
+            print ("SHG temp.     " + str.format('{:2.1f}',int(self.strShgTemp,16)/10) + " °C")
+            print ("THG temp.     " + str.format('{:2.1f}',int(self.strThgTemp,16)/10) + " °C")
 
         # get set temperatures
         if self.command == "7C":
             self.SendReply("08fc" + self.strDiodeTemp +self.strChillerTemp + self.strShgTemp + self.strThgTemp + "0000000000000000")
             print("Temperatures sent : " )
-            print ("Diode temp.   " + str.format('{:2.1f}',int(self.strDiodeTemp,16)/100) + " °C")
-            print ("Chiller temp. " + str.format('{:2.1f}',int(self.strChillerTemp,16)/100) + " °C")
-            print ("SHG temp.     " + str.format('{:2.1f}',int(self.strShgTemp,16)/100) + " °C")
-            print ("THG temp.     " + str.format('{:2.1f}',int(self.strThgTemp,16)/100) + " °C")
+            print ("Diode temp.   " + str.format('{:2.1f}',int(self.strDiodeTemp,16)/10) + " °C")
+            print ("Chiller temp. " + str.format('{:2.1f}',int(self.strChillerTemp,16)/10) + " °C")
+            print ("SHG temp.     " + str.format('{:2.1f}',int(self.strShgTemp,16)/10) + " °C")
+            print ("THG temp.     " + str.format('{:2.1f}',int(self.strThgTemp,16)/10) + " °C")
 
 # main function
 

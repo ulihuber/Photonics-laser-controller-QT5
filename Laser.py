@@ -9,7 +9,7 @@ import laserconstants as const
 
 
 class Laser():
-    def __init__(self, findCom = True, verbose = False, debug = False):
+    def __init__(self, findCom = True, com = "", verbose = False, debug = False):
         Checksum = 0
         self.Debug = debug
         self.Verbose = verbose
@@ -20,7 +20,7 @@ class Laser():
             else:
                 print("No Laser!")
         else:
-            self.rs232 = Serial('com16',19200, timeout=0.1)
+            self.rs232 = Serial(com,19200, timeout=0.1)
         #self.rs232 = serial.Serial('/dev/ttyAMA0',19200, timeout=0.1)
         #self.rs232 = serial.Serial('/dev/ttyUSB0',19200, timeout=0.1)
         
