@@ -6,7 +6,6 @@ import msvcrt
 from random import randint
 
 
-
 class LaserSim:
     Checksum = 0
     rs232 = 0

@@ -7,7 +7,6 @@ from serial.tools.list_ports import comports
 import time
 import laserconstants as const
 
-
 class Laser():
     def __init__(self, findCom = True, com = "", verbose = False, debug = False):
         Checksum = 0
